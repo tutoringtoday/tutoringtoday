@@ -1,0 +1,10 @@
+a {
+  &.plain-link {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  &:hover {
+    color: #005596;
+  }
+}

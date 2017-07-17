@@ -1,0 +1,24 @@
+// Import variables
+@import 'variables';
+
+// Import styles
+@import 'fontstyle';
+@import 'linkstyle';
+
+// Import properties
+@import 'footer';
+
+.content {
+  padding-top: $navbar-height;
+  padding-bottom: $footer-height;
+}
+
+.hero {
+  height: 300px;
+  // TODO: vertical center text
+}
+
+.spread {
+  display: flex;
+  justify-content: space-between;
+}
