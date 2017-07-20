@@ -62,6 +62,10 @@ module.exports = {
       filename: 'index.html',
       template: 'src/index.html'
     }),
+    new HtmlWebpackPlugin({
+      filename: 'Contactus.html',
+      template: 'src/Contactus.html'
+    }),
     new CleanWebpackPlugin(['dist'])
   ]
 }
