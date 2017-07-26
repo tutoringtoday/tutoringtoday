@@ -58,5 +58,5 @@ typings/
 .env
 
 # Ignore compiled files
-dist/public/css/
-dist/public/js/
+dist/public/css
+dist/public/js
