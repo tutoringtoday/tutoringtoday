@@ -1,11 +1,9 @@
+require('dotenv').config();
+
 const path = require('path');
 const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
-
-const extractPlugin = new ExtractTextPlugin({
-  filename: 'public/css/main.css'
-});
 
 module.exports = {
   entry: './src/index.js',
@@ -28,7 +26,7 @@ module.exports = {
       },
       {
         test: /\.scss$/,
-        use: extractPlugin.extract({
+        use: ExtractTextPlugin.extract({
           use: ['css-loader', 'sass-loader']
         })
       },
@@ -47,8 +45,15 @@ module.exports = {
       }
     ]
   },
-  plugins: [
-    extractPlugin,
+  plugins: process.env.NODE_ENV == 'development' ?
+  [
+    new ExtractTextPlugin({ filename: 'public/css/style.css' }),
+    new CleanWebpackPlugin(['public/dist/css', 'public/dist/js'])
+  ]
+  :
+  [
+    new webpack.optimize.UglifyJsPlugin(),
+    new ExtractTextPlugin({ filename: 'public/css/style.css' }),
     new CleanWebpackPlugin(['public/dist/css', 'public/dist/js'])
   ]
 };
