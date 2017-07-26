@@ -1,18 +1,17 @@
 const path = require('path');
 const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 const extractPlugin = new ExtractTextPlugin({
-  filename: 'main.css'
+  filename: 'public/css/main.css'
 });
 
 module.exports = {
-  entry: './src/js/app.js',
+  entry: './src/index.js',
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'bundle.js',
+    filename: 'public/js/bundle.js',
   },
   module: {
     rules:[
@@ -34,10 +33,6 @@ module.exports = {
         })
       },
       {
-        test: /\.html$/,
-        use: ['html-loader']
-      },
-      {
         test: /\.(jpg|png)$/,
         use: [
           {
@@ -53,15 +48,7 @@ module.exports = {
     ]
   },
   plugins: [
-    new webpack.ProvidePlugin({
-      $: 'jquery',
-      jQuery: 'jquery'
-    }),
     extractPlugin,
-    new HtmlWebpackPlugin({
-      filename: 'index.html',
-      template: 'src/index.html'
-    }),
-    new CleanWebpackPlugin(['dist'])
+    new CleanWebpackPlugin(['public/dist/css', 'public/dist/js'])
   ]
-}
+};
