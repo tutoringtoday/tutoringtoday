@@ -1,3 +1,5 @@
+// Import Sass style sheet
 import './scss/main.scss';
 
-console.log('Hello');
+// Import JavaScript files
+import './js/main.js';
